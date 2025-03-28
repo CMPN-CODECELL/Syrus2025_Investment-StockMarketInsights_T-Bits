@@ -1,0 +1,24 @@
+{
+  "_id": "cd13353f-ce5e-431e-b51a-cd2a5fe9bf05",
+  "aiPersonaId": "f8b43ab1-e25f-45c6-9396-886ca463913d",
+  "integrationId": "summarize-financial-news-2444",
+  "name": "Workflow for Summarize Financial News",
+  "publisherAccountId": "68f89d2a-a1ea-4f52-8355-eac53c22c410",
+  "startTaskId": "bbf09f48-06b9-4130-b27e-d9addf435a6f",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "bbf09f48-06b9-4130-b27e-d9addf435a6f",
+      "transitions": [],
+      "type": "Display",
+      "config": {
+        "name": "Display",
+        "description": "Display the response to the user",
+        "type": "text",
+        "text": "Hi there! Intent $input.intent has been matched"
+      }
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest"
+}

@@ -1,0 +1,39 @@
+{
+  "_id": "39585346-2556-4f76-a2b3-ee77466d7898",
+  "aiPersonaId": "f8b43ab1-e25f-45c6-9396-886ca463913d",
+  "integrationId": "predictive-insights-agent-9476",
+  "intentClassification": {
+    "modelId": "4cf651d9-edf3-455f-a22e-53cc67fcc07b"
+  },
+  "intents": [
+    {
+      "_id": "forecast-price-movements-9476",
+      "name": "Forecast Price Movements",
+      "description": "Predicts short-term price movements based on historical data and market patterns.",
+      "examples": [
+        "What is the predicted price movement for Google stock?",
+        "Forecast the short-term trend for Microsoft.",
+        "What are the expected price changes for Netflix this week?"
+      ],
+      "flowType": "Workflow",
+      "workflowId": "ad9611f8-02c5-4073-9a71-b712f86654ca"
+    },
+    {
+      "_id": "identify-trading-patterns-9476",
+      "name": "Identify Trading Patterns",
+      "description": "Detects recurring trading patterns in historical stock data to inform trading strategies.",
+      "examples": [
+        "Identify any head and shoulders patterns in the last month.",
+        "Are there any double bottom patterns in the tech stocks?",
+        "What trading patterns are emerging in the financial sector?"
+      ],
+      "flowType": "Workflow",
+      "workflowId": "c0201315-6d3a-4169-b123-e9799d4a9ff9"
+    }
+  ],
+  "name": "Predictive Insights Agent",
+  "primaryWorkflowId": "9b541b79-a6f8-4f8a-b55d-4088e4b35e6b",
+  "publisherAccountId": "68f89d2a-a1ea-4f52-8355-eac53c22c410",
+  "scope": "Analyzes historical stock data to forecast short-term price movements and identify trading patterns. It uses statistical models and machine learning algorithms to predict future market behavior.",
+  "status": "Active"
+}

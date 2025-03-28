@@ -1,0 +1,27 @@
+{
+  "_id": "d3a78ef9-9ce1-4676-a88c-12fcc0c6210e",
+  "aiPersonaId": "f8b43ab1-e25f-45c6-9396-886ca463913d",
+  "integrationId": "sentiment-analysis-agent-4075",
+  "intentClassification": {
+    "modelId": "4cf651d9-edf3-455f-a22e-53cc67fcc07b"
+  },
+  "intents": [
+    {
+      "_id": "analyze-market-sentiment-4075",
+      "name": "Analyze Market Sentiment",
+      "description": "Assesses the overall market sentiment by analyzing news articles and social media posts.",
+      "examples": [
+        "What is the current sentiment on Tesla in the news?",
+        "Analyze the social media sentiment for Bitcoin.",
+        "Is the market sentiment bullish or bearish today?"
+      ],
+      "flowType": "Workflow",
+      "workflowId": "4c1d486b-34e2-4d67-889f-9f66c9001d9b"
+    }
+  ],
+  "name": "Sentiment Analysis Agent",
+  "primaryWorkflowId": "9482726b-bb6e-4886-b547-1f3e96f74ef5",
+  "publisherAccountId": "68f89d2a-a1ea-4f52-8355-eac53c22c410",
+  "scope": "Evaluates market sentiment from news sources and social media to detect bullish or bearish trends. It analyzes the tone and context of market-related discussions.",
+  "status": "Active"
+}

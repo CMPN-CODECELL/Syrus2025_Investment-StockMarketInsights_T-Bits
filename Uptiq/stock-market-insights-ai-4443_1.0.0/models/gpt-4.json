@@ -1,0 +1,31 @@
+{
+  "_id": "gpt-4",
+  "name": "GPT 4",
+  "description": "The latest version of GPT from OpenAI.",
+  "provider": "OpenAI",
+  "providerModelId": "gpt-4",
+  "type": "Chat",
+  "isFineTunable": false,
+  "isJSONResponseSupported": false,
+  "price": {
+    "input": {
+      "basePrice": 30
+    },
+    "output": {
+      "basePrice": 60
+    }
+  },
+  "outgoingRequestIdentifierQuery": "body::jsonb ->> 'model' = 'gpt-4'",
+  "status": "Active",
+  "creator": "OpenAI",
+  "isFineTuned": false,
+  "supportedMimeTypes": [
+    "image/png",
+    "image/jpeg",
+    "image/jpg",
+    "image/webp",
+    "image/gif"
+  ],
+  "onDemandProvisioning": false,
+  "supportsAssistant": true
+}
