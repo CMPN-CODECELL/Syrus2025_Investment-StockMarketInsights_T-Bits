@@ -96,7 +96,7 @@ export default function TradePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {/* Buy Section */}
             <div className="bg-gray-50 p-6 rounded-lg border">
-              <h3 className="text-2xl font-semibold mb-4 text-center">💸 Buy Stock</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-center text-slate-600">💸 Buy Stock</h3>
               <button
                 onClick={() => openModal('buy')}
                 className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow-md w-full"
@@ -107,7 +107,7 @@ export default function TradePage() {
 
             {/* Sell Section */}
             <div className="bg-gray-50 p-6 rounded-lg border">
-              <h3 className="text-2xl font-semibold mb-4 text-center">📉 Sell Stock</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-center text-slate-600">📉 Sell Stock</h3>
               <button
                 onClick={() => openModal('sell')}
                 className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow-md w-full"
