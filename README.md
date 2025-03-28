@@ -1,51 +1,54 @@
-# 📈 Stock Market Insights AI – Investment Recommendations Agent
+Sure! Here's the full **README.md** content combining both the **Investment Recommendations Agent** and the **News Summarization Agent** sections in a format ready to paste directly into VS Code:
 
-This agent provides **personalized investment recommendations** based on a user's financial goal, investment horizon, and risk tolerance. It is developed using **UPTIQ AI Workbench** under a **multi-agent system** designed for intelligent stock market insights.
+---
+
+```markdown
+# 📊 Stock Market Insights AI – Multi-Agent System
+
+This project is built using **UPTIQ AI Workbench** as a **multi-agent system** to provide intelligent stock market insights. Each sub-agent focuses on a specialized task such as investment recommendations, financial news summarization, sentiment analysis, and more.
 
 ---
 
 ## 🧠 Overview
 
-**Main Agent:** `Stock Market Insights AI`  
-**Sub-Agent Focus:** `Investment Recommendations Agent`
-
-This sub-agent recommends investment opportunities by processing user intent through an LLM using goal-based prompts.
+**Main Agent Name**: `Stock Market Insights AI`  
+**System Type**: `Multi-Agent System`
 
 ---
 
-## 🛠️ Project Setup Steps
-
-### 1. Create the Main Agent
-
-- Go to: [console.uptiq.ai/ai-agents](https://console.uptiq.ai/ai-agents)
-- Click **Build an AI Agent**
-- Set the name: `Stock Market Insights AI`
-- Choose system type: **Multi-Agent System**
-
----
-
-### 2. Add Sub-Agents
-
-Under the main agent, create the following sub-agents:
+## 🤖 Sub-Agents Included
 
 - ✅ Market Analysis Agent  
 - ✅ Predictive Insights Agent  
 - ✅ News Summarization Agent  
 - ✅ Sentiment Analysis Agent  
-- ✅ **Investment Recommendations Agent** ← *Our focus*
+- ✅ **Investment Recommendations Agent** ← *Detailed below*
 
 ---
 
-## ⚙️ Workflow for Investment Recommendations
+# 📈 Investment Recommendations Agent
 
-Navigate to `Workflows > Workflow for Recommend Investments`.
+This sub-agent provides **personalized investment suggestions** based on three key user inputs:  
+1. **Investment Goal**  
+2. **Time Horizon**  
+3. **Risk Tolerance**
 
-### 1. Setup Workflow
+It guides the user through a sequence of questions and uses an LLM to generate smart investment advice.
 
-- Type: `Conversational`
-- Add 3 **Question blocks** from `User Interaction > Question`
+---
 
-#### Questions and Variables:
+## ⚙️ Workflow Setup
+
+Navigate to:  
+`Workflows > Workflow for Recommend Investments`
+
+### 1. Workflow Type
+
+- Set as: **Conversational**
+
+### 2. Add Question Blocks
+
+From `User Interaction > Question`, add three question blocks:
 
 | Step | Question | Variable | Reference Path |
 |------|----------|----------|----------------|
@@ -53,21 +56,25 @@ Navigate to `Workflows > Workflow for Recommend Investments`.
 | Q2 | Are you looking for short-term or long-term investments? | `investment_horizon` | `$.response` |
 | Q3 | What is your risk tolerance (Low, Medium, High)? | `risk_tolerance` | `$.response` |
 
-You can configure questions beforehand in `Config & Utils > Questions`.
+🛠 You can configure these questions ahead of time in:  
+`Config & Utils > Questions`
 
 ---
 
-### 2. Add Prompt Block
+### 3. Add Prompt Block
 
-- Drag from `AI / Foundational > Prompt`
-- **Model**: Select your LLM (e.g., GPT-4, Claude, LLAMA, etc.)
+From `AI / Foundational > Prompt`:
 
-#### Prompt Configuration
+- **Model**: `GPT-4`, `LLAMA`, `Claude`, etc.
 
-- **System Prompt**:
+#### System Prompt
+
+```txt
 You are an expert financial advisor. Based on the user's investment goal, time horizon, and risk tolerance, recommend 3 ideal investment options.
+```
 
-- **Query**:
+#### Query
+
 ```txt
 What are the best investment options for a user whose goal is "{{investment_goal}}", investment horizon is "{{investment_horizon}}", and risk tolerance is "{{risk_tolerance}}"?
 
@@ -91,12 +98,125 @@ AI: Here are your personalized investment recommendations:
 3. REITs - Passive income from real estate.
 ```
 
-## 📸 Implementation Screenshots
+---
 
-![Main Agent Setup](Agent%20SS/Screenshot%202025-03-28%20224147.png)
+### 4. Add Display Block
 
-![Sub-Agents Configuration](Agent%20SS/Screenshot%202025-03-28%20224126.png)
+From `User Interaction > Display`:
 
-![Workflow Setup](Agent%20SS/Screenshot%202025-03-28%20224059.png)
+- **Text Configuration**:
 
+```txt
+Here are your personalized investment recommendations:
+{{prompt_output}}
+```
+
+---
+
+### ✅ Final Agent Flow
+
+```text
+Start → Question 1 → Question 2 → Question 3 → Prompt → Display
+```
+
+---
+
+## 📸 Screenshots
+
+![Main Agent Setup](Agent%20SS/Screenshot%202025-03-28%20224147.png)  
+![Sub-Agents Configuration](Agent%20SS/Screenshot%202025-03-28%20224126.png)  
+![Workflow Setup](Agent%20SS/Screenshot%202025-03-28%20224059.png)  
 ![Agent Execution](Agent%20SS/Screenshot%202025-03-28%20225149.png)
+
+---
+
+# 📰 News Summarization Agent
+
+This agent allows users to **paste financial news** and get **quick summaries** explaining key updates and market impact.
+
+---
+
+## ⚙️ Workflow Setup
+
+Navigate to:  
+`Workflows > Workflow for Summarize Financial News`
+
+### 1. Workflow Type
+
+- Set as: **Conversational**
+
+---
+
+### 2. Add Input Block
+
+From `User Interaction > Input`:
+
+- Label: `News Input`
+- **Input Type**: `String`
+- **Agent Variable**: `news_text`  
+- Reference Path: `$.response`
+
+---
+
+### 3. Add Prompt Block
+
+From `AI / Foundational > Prompt`:
+
+- **Model**: GPT-4 (or preferred LLM)
+
+#### System Prompt
+
+```txt
+You are a financial analyst AI.
+Summarize any financial news text clearly and explain potential market impact.
+```
+
+#### Query
+
+```txt
+Summarize this financial news: {{news_text}}
+```
+
+---
+
+### 4. Add Display Block
+
+From `User Interaction > Display`:
+
+- **Text Configuration**:
+
+```txt
+📌 Here's the summarized news update:
+{{prompt_output}}
+```
+
+---
+
+### ✅ Final Agent Flow
+
+```text
+Start → Input → Prompt → Display
+```
+
+---
+
+## 📸 Screenshots
+
+![Input Block](Agent%20SS/Screenshot%202025-03-28%20223900.png)  
+![Prompt Configuration](Agent%20SS/Screenshot%202025-03-28%20223839.png)  
+![Final Output Display](Agent%20SS/Screenshot%202025-03-28%20223819.png)
+![NewsAgent](Agent%20SS/Screenshot 2025-03-28 235515.png)
+
+---
+
+## ✅ Status
+
+Both agents tested and verified in the UPTIQ console via conversational interface.
+
+---
+
+## 🚀 Future Enhancements
+
+- Add external news scraping via API
+- Automate market trend forecasting using historical price datasets
+- Include reinforcement learning for investment optimization
