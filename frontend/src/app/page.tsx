@@ -1,26 +1,20 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import Link from 'next/link';
+import AuthModal from '@/components/auth/AuthModal';
+import SignInForm from '@/components/auth/SignInForm';
+import SignUpForm from '@/components/auth/SignUpForm';
 
 export default function LandingPage() {
   const { user, loading } = useAuth();
   const router = useRouter();
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
 
-  useEffect(() => {
-    if (!loading) {
-      if (user) {
-        router.push('/dashboard');
-      } else {
-        router.push('/auth/signin');
-      }
-    }
-  }, [user, loading, router]);
-
-  // Show loading state while checking auth
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -35,19 +29,24 @@ export default function LandingPage() {
                 SyrusAI
               </div>
             </div>
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#features" className="text-gray-600 hover:text-blue-600">Features</a>
+              <a href="#why-choose-us" className="text-gray-600 hover:text-blue-600">Why Choose Us</a>
+              <a href="#testimonials" className="text-gray-600 hover:text-blue-600">Testimonials</a>
+            </div>
             <div className="flex items-center gap-4">
-              <Link 
-                href="/auth/signin"
+              <button 
+                onClick={() => setShowSignIn(true)}
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Sign In
-              </Link>
-              <Link
-                href="/auth/signup"
+              </button>
+              <button
+                onClick={() => setShowSignUp(true)}
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Get Started
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -157,6 +156,151 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+
+      {/* Why Choose Us Section */}
+      <div className="py-24 bg-gray-50" id="why-choose-us">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Why Choose SyrusAI?
+            </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              Experience the future of investing with our cutting-edge platform
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="text-blue-600 mb-4">
+                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-4">100% Free</h3>
+              <p className="text-gray-600">Access all our features without any cost. We believe in democratizing investment insights.</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="text-blue-600 mb-4">
+                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Real-time Analysis</h3>
+              <p className="text-gray-600">Get instant insights and alerts based on market movements and trends.</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="text-blue-600 mb-4">
+                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Customizable Strategies</h3>
+              <p className="text-gray-600">Create and backtest your own trading strategies with our intuitive tools.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Testimonials Section */}
+      <div className="py-24" id="testimonials">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              What Our Users Say
+            </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              Join thousands of satisfied investors using SyrusAI
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="flex items-center mb-4">
+                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
+                  <span className="text-blue-600 text-xl font-semibold">R</span>
+                </div>
+                <div className="ml-4">
+                  <h4 className="text-lg font-semibold">Rahul M.</h4>
+                  <p className="text-gray-600">Retail Investor</p>
+                </div>
+              </div>
+              <p className="text-gray-600">"The AI-powered insights have completely transformed my investment strategy. I feel more confident in my decisions now."</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="flex items-center mb-4">
+                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
+                  <span className="text-blue-600 text-xl font-semibold">P</span>
+                </div>
+                <div className="ml-4">
+                  <h4 className="text-lg font-semibold">Priya S.</h4>
+                  <p className="text-gray-600">"The backtesting feature is incredible. I've improved my trading strategy significantly using SyrusAI's tools."</p>
+                </div>
+              </div>
+              <p className="text-gray-600">"The sentiment analysis helps me stay ahead of market trends. Best of all, it's completely free!"</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="flex items-center mb-4">
+                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
+                  <span className="text-blue-600 text-xl font-semibold">A</span>
+                </div>
+                <div className="ml-4">
+                  <h4 className="text-lg font-semibold">Amit K.</h4>
+                  <p className="text-gray-600">"The sentiment analysis helps me stay ahead of market trends. Best of all, it's completely free!"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-lg font-semibold mb-4">About SyrusAI</h3>
+              <p className="text-gray-400">Empowering investors with AI-driven insights and tools for better financial decisions.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <ul className="space-y-2">
+                <li><a href="#features" className="text-gray-400 hover:text-white">Features</a></li>
+                <li><a href="#why-choose-us" className="text-gray-400 hover:text-white">Why Choose Us</a></li>
+                <li><a href="#testimonials" className="text-gray-400 hover:text-white">Testimonials</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Resources</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-gray-400 hover:text-white">Blog</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white">Market Analysis</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white">Learning Center</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Contact</h3>
+              <ul className="space-y-2">
+                <li className="text-gray-400">support@syrusai.com</li>
+                <li className="text-gray-400">+91 XXX XXX XXXX</li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+            <p className="text-gray-400">&copy; 2024 SyrusAI. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Auth Modals */}
+      {showSignIn && (
+        <AuthModal isOpen={showSignIn} onClose={() => setShowSignIn(false)} title="Welcome Back">
+          <SignInForm />
+        </AuthModal>
+      )}
+
+      {showSignUp && (
+        <AuthModal isOpen={showSignUp} onClose={() => setShowSignUp(false)} title="Get Started">
+          <SignUpForm />
+        </AuthModal>
+      )}
     </div>
   );
 }
