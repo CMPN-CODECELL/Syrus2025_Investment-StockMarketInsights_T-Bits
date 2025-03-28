@@ -1,0 +1,24 @@
+{
+  "_id": "c0201315-6d3a-4169-b123-e9799d4a9ff9",
+  "aiPersonaId": "f8b43ab1-e25f-45c6-9396-886ca463913d",
+  "integrationId": "identify-trading-patterns-0146",
+  "name": "Workflow for Identify Trading Patterns",
+  "publisherAccountId": "68f89d2a-a1ea-4f52-8355-eac53c22c410",
+  "startTaskId": "d37f9245-0260-466f-aca0-cf740638d706",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "d37f9245-0260-466f-aca0-cf740638d706",
+      "transitions": [],
+      "type": "Display",
+      "config": {
+        "name": "Display",
+        "description": "Display the response to the user",
+        "type": "text",
+        "text": "Hi there! Intent $input.intent has been matched"
+      }
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest"
+}

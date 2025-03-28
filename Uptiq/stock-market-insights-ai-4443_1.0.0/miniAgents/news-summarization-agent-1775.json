@@ -1,0 +1,27 @@
+{
+  "_id": "df565a3b-96d2-47de-92df-95318fbb8ee5",
+  "aiPersonaId": "f8b43ab1-e25f-45c6-9396-886ca463913d",
+  "integrationId": "news-summarization-agent-1775",
+  "intentClassification": {
+    "modelId": "4cf651d9-edf3-455f-a22e-53cc67fcc07b"
+  },
+  "intents": [
+    {
+      "_id": "summarize-financial-news-1775",
+      "name": "Summarize Financial News",
+      "description": "Provides concise summaries of the latest financial news and its potential impact on the market.",
+      "examples": [
+        "Summarize today's top financial news.",
+        "What are the key takeaways from the latest earnings report of Apple?",
+        "How might the new regulations affect the banking sector?"
+      ],
+      "flowType": "Workflow",
+      "workflowId": "cd13353f-ce5e-431e-b51a-cd2a5fe9bf05"
+    }
+  ],
+  "name": "News Summarization Agent",
+  "primaryWorkflowId": "8aa0450b-b156-49dc-b7d7-220cf22358b9",
+  "publisherAccountId": "68f89d2a-a1ea-4f52-8355-eac53c22c410",
+  "scope": "Extracts key insights from financial news, earnings reports, and regulatory updates to assess their impact on the stock market.",
+  "status": "Active"
+}

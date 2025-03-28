@@ -1,0 +1,109 @@
+{
+  "aiPersonaIntegrationId": "stock-market-insights-ai-4443",
+  "version": "1.0.0",
+  "description": "AI Agent stock-market-insights-ai-4443 package version 1.0.0",
+  "data": {
+    "workflows": [
+      [
+        "workflows",
+        "track-stock-performance-7834.json"
+      ],
+      [
+        "workflows",
+        "detect-market-trends-7834.json"
+      ],
+      [
+        "workflows",
+        "ma-market-analysis-agent-6940-primary-workflow-for-market-analysis-agent.json"
+      ],
+      [
+        "workflows",
+        "forecast-price-movements-0146.json"
+      ],
+      [
+        "workflows",
+        "identify-trading-patterns-0146.json"
+      ],
+      [
+        "workflows",
+        "ma-predictive-insights-agent-9476-primary-workflow-for-predictive-insights-agent.json"
+      ],
+      [
+        "workflows",
+        "summarize-financial-news-2444.json"
+      ],
+      [
+        "workflows",
+        "ma-news-summarization-agent-1775-primary-workflow-for-news-summarization-agent.json"
+      ],
+      [
+        "workflows",
+        "analyze-market-sentiment-4976.json"
+      ],
+      [
+        "workflows",
+        "ma-sentiment-analysis-agent-4075-primary-workflow-for-sentiment-analysis-agent.json"
+      ],
+      [
+        "workflows",
+        "recommend-investments-7310.json"
+      ],
+      [
+        "workflows",
+        "ma-investment-recommendations-agent-6608-primary-workflow-for-investment-recommendations-agent.json"
+      ]
+    ],
+    "models": [
+      [
+        "models",
+        "azure-gpt-4o-mini.json"
+      ],
+      [
+        "models",
+        "gpt-4.json"
+      ]
+    ],
+    "miniAgents": [
+      [
+        "miniAgents",
+        "market-analysis-agent-6940.json"
+      ],
+      [
+        "miniAgents",
+        "predictive-insights-agent-9476.json"
+      ],
+      [
+        "miniAgents",
+        "news-summarization-agent-1775.json"
+      ],
+      [
+        "miniAgents",
+        "sentiment-analysis-agent-4075.json"
+      ],
+      [
+        "miniAgents",
+        "investment-recommendations-agent-6608.json"
+      ]
+    ],
+    "questions": [
+      [
+        "questions",
+        "1.json"
+      ],
+      [
+        "questions",
+        "2.json"
+      ],
+      [
+        "questions",
+        "3.json"
+      ]
+    ],
+    "aiPersonas": [
+      [
+        "aiPersonas",
+        "stock-market-insights-ai-4443.json"
+      ]
+    ]
+  }
+}

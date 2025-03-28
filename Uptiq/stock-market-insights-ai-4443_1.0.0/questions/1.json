@@ -1,0 +1,10 @@
+{
+  "_id": "cf669896-018a-4afe-b20b-4c61fc9328b7",
+  "enableFreeSolo": null,
+  "options": null,
+  "questionId": "1",
+  "status": "Active",
+  "text": "What is your investment goal?",
+  "title": "Investment Goal",
+  "type": "string"
+}

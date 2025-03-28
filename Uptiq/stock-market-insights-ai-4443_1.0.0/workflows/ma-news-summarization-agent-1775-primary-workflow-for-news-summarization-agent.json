@@ -1,0 +1,299 @@
+{
+  "_id": "8aa0450b-b156-49dc-b7d7-220cf22358b9",
+  "aiPersonaId": "f8b43ab1-e25f-45c6-9396-886ca463913d",
+  "integrationId": "ma-news-summarization-agent-1775-primary-workflow-for-news-summarization-agent",
+  "isMiniAgentPrimaryWorkflow": true,
+  "name": "Primary Workflow for News Summarization Agent",
+  "publisherAccountId": "68f89d2a-a1ea-4f52-8355-eac53c22c410",
+  "startTaskId": "728e0f9e-fea8-48e1-9728-3b608f3039ff",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "728e0f9e-fea8-48e1-9728-3b608f3039ff",
+      "type": "PassThrough",
+      "config": {
+        "name": "Pass Through",
+        "description": "Pass through the input to the output"
+      },
+      "transitions": [
+        {
+          "_id": "a801acbc-78fe-4e4c-8c7b-f469e2a917ef-728e0f9e-fea8-48e1-9728-3b608f3039ff",
+          "nextTask": "a801acbc-78fe-4e4c-8c7b-f469e2a917ef",
+          "name": "If query doesnt exists",
+          "rules": [
+            {
+              "type": "any",
+              "operator": "notExists",
+              "path": "$output.query"
+            }
+          ]
+        },
+        {
+          "_id": "55bb6dd7-1b21-492f-be4b-69fa43c47712-728e0f9e-fea8-48e1-9728-3b608f3039ff",
+          "nextTask": "55bb6dd7-1b21-492f-be4b-69fa43c47712",
+          "name": "If intents are already classified",
+          "rules": [
+            {
+              "type": "any",
+              "operator": "exists",
+              "path": "$output.intents"
+            },
+            {
+              "type": "any",
+              "operator": "exists",
+              "path": "$output.query"
+            }
+          ]
+        },
+        {
+          "_id": "728e0f9e-fea8-48e1-9728-3b608f3039ff-85b2d057-f545-4e99-a425-02cbb9687d5f",
+          "name": "If query exists",
+          "nextTask": "85b2d057-f545-4e99-a425-02cbb9687d5f",
+          "rules": [
+            {
+              "type": "any",
+              "operator": "exists",
+              "path": "$output.query"
+            },
+            {
+              "type": "any",
+              "operator": "notExists",
+              "path": "$output.intents"
+            }
+          ]
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "query",
+          "referencePath": "$input.query"
+        },
+        {
+          "name": "rawQuery",
+          "referencePath": "$input.rawQuery"
+        },
+        {
+          "name": "conversationId",
+          "referencePath": "$input.conversationId"
+        }
+      ]
+    },
+    {
+      "_id": "a801acbc-78fe-4e4c-8c7b-f469e2a917ef",
+      "type": "Input",
+      "config": {
+        "name": "User Input",
+        "description": "Get user input",
+        "type": "string"
+      },
+      "transitions": [
+        {
+          "_id": "a801acbc-78fe-4e4c-8c7b-f469e2a917ef-85b2d057-f545-4e99-a425-02cbb9687d5f",
+          "name": "Default",
+          "nextTask": "85b2d057-f545-4e99-a425-02cbb9687d5f"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "query",
+          "referencePath": "$output.userInput"
+        },
+        {
+          "name": "rawQuery",
+          "referencePath": "$output.userInput"
+        },
+        {
+          "name": "selfLoopMiniAgent",
+          "referencePath": "true"
+        }
+      ]
+    },
+    {
+      "_id": "85b2d057-f545-4e99-a425-02cbb9687d5f",
+      "type": "Loader",
+      "config": {
+        "name": "Loader",
+        "description": "Display loader message",
+        "type": "loader",
+        "text": "Just a moment... identifying the best approach to assist you."
+      },
+      "transitions": [
+        {
+          "_id": "85b2d057-f545-4e99-a425-02cbb9687d5f-f6d41198-65b5-411e-bef4-93a6954bbcab",
+          "name": "Default",
+          "nextTask": "f6d41198-65b5-411e-bef4-93a6954bbcab"
+        }
+      ]
+    },
+    {
+      "_id": "f6d41198-65b5-411e-bef4-93a6954bbcab",
+      "type": "IntentClassification",
+      "config": {
+        "name": "Intent Classification",
+        "description": "Classify the intent of the user message",
+        "modelId": "4cf651d9-edf3-455f-a22e-53cc67fcc07b",
+        "intents": [
+          {
+            "name": "Summarize Financial News",
+            "description": "Provides concise summaries of the latest financial news and its potential impact on the market.",
+            "examples": [
+              "Summarize today's top financial news.",
+              "What are the key takeaways from the latest earnings report of Apple?",
+              "How might the new regulations affect the banking sector?"
+            ]
+          }
+        ],
+        "query": "$agent.query"
+      },
+      "transitions": [
+        {
+          "_id": "f6d41198-65b5-411e-bef4-93a6954bbcab-55bb6dd7-1b21-492f-be4b-69fa43c47712",
+          "name": "If Intent is Matched",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.intentMatched",
+              "value": "true"
+            }
+          ],
+          "nextTask": "55bb6dd7-1b21-492f-be4b-69fa43c47712"
+        },
+        {
+          "_id": "f6d41198-65b5-411e-bef4-93a6954bbcab-3cc586b7-29c8-411c-bb4e-cb5ccb7f22d6",
+          "name": "If No Intent is Matched",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.intentMatched",
+              "value": "false"
+            }
+          ],
+          "nextTask": "3cc586b7-29c8-411c-bb4e-cb5ccb7f22d6"
+        }
+      ]
+    },
+    {
+      "_id": "55bb6dd7-1b21-492f-be4b-69fa43c47712",
+      "type": "JSFunction",
+      "config": {
+        "name": "JS Function",
+        "description": "Execute JS function",
+        "code": "\nconst main = () => {\n    const currentExecutionId = _id;\n    const intents = agent?.icIntents?.[currentExecutionId] || input.intents;\n    const currentIndex = agent?.icLoopIndexes?.[currentExecutionId] || 0;\n    const currentIntent = intents[currentIndex] || {};\n    const { intent, task } = currentIntent;\n    const state = currentIndex === intents.length ? 'end' : 'continue'\n    const icLoopIndexes = { ...(agent?.icLoopIndexes || {}), [_id]: state === 'end' ? undefined : currentIndex + 1 };\n    const icIntents = { ...(agent?.icIntents || {}), [_id]: state === 'end' ? undefined : intents };\n    return { ...input, intent, state: currentIndex === intents.length ? 'end' : 'continue', icLoopIndexes, icIntents, query: task };\n};\n\nmain()\n"
+      },
+      "globalVariables": [
+        {
+          "referencePath": "$output.icLoopIndexes",
+          "name": "icLoopIndexes"
+        },
+        {
+          "referencePath": "$output.icIntents",
+          "name": "icIntents"
+        }
+      ],
+      "transitions": [
+        {
+          "_id": "55bb6dd7-1b21-492f-be4b-69fa43c47712-7c3cb850-b135-4f46-a375-e127e89d182a",
+          "name": "If Intent is Matched",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.intent",
+              "value": "Summarize Financial News"
+            }
+          ],
+          "nextTask": "7c3cb850-b135-4f46-a375-e127e89d182a"
+        },
+        {
+          "_id": "55bb6dd7-1b21-492f-be4b-69fa43c47712-a801acbc-78fe-4e4c-8c7b-f469e2a917ef",
+          "name": "If Self Loop",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$agent.selfLoopMiniAgent",
+              "value": "true"
+            },
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.state",
+              "value": "end"
+            }
+          ],
+          "nextTask": "a801acbc-78fe-4e4c-8c7b-f469e2a917ef"
+        }
+      ]
+    },
+    {
+      "_id": "7c3cb850-b135-4f46-a375-e127e89d182a",
+      "type": "Workflow",
+      "config": {
+        "name": "Intent - Summarize Financial News",
+        "description": "Workflow for intent - Summarize Financial News",
+        "workflowId": "cd13353f-ce5e-431e-b51a-cd2a5fe9bf05"
+      },
+      "transitions": [
+        {
+          "_id": "7c3cb850-b135-4f46-a375-e127e89d182a-55bb6dd7-1b21-492f-be4b-69fa43c47712",
+          "name": "Mini agent execution completed",
+          "nextTask": "55bb6dd7-1b21-492f-be4b-69fa43c47712"
+        }
+      ]
+    },
+    {
+      "_id": "3cc586b7-29c8-411c-bb4e-cb5ccb7f22d6",
+      "transitions": [
+        {
+          "_id": "3cc586b7-29c8-411c-bb4e-cb5ccb7f22d6-a801acbc-78fe-4e4c-8c7b-f469e2a917ef",
+          "name": "If Self Loop",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$agent.selfLoopMiniAgent",
+              "value": "true"
+            }
+          ],
+          "nextTask": "a801acbc-78fe-4e4c-8c7b-f469e2a917ef"
+        }
+      ],
+      "type": "Output",
+      "config": {
+        "name": "Output",
+        "description": "Output the response to the user",
+        "type": "external",
+        "text": "Unable to complete task $agent.query"
+      }
+    },
+    {
+      "_id": "fb4d7d30-c886-4041-8c46-5836a3b46f00",
+      "transitions": [
+        {
+          "_id": "fb4d7d30-c886-4041-8c46-5836a3b46f00-a801acbc-78fe-4e4c-8c7b-f469e2a917ef",
+          "name": "If Self Loop",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$agent.selfLoopMiniAgent",
+              "value": "true"
+            }
+          ],
+          "nextTask": "a801acbc-78fe-4e4c-8c7b-f469e2a917ef"
+        }
+      ],
+      "type": "Display",
+      "config": {
+        "name": "Display",
+        "description": "Display the response to the user",
+        "type": "text",
+        "text": "$input.content"
+      }
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest"
+}
