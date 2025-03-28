@@ -197,7 +197,7 @@ Start → Input → Prompt → Display
 
 ## 📸 Screenshots
 
-![NAgent Execution](Agent%20SS/Screenshot%2025-03-28%235515.png)
+![NAgent Execution](Agent%20SS/Screenshot%202025-03-28%20235515.png)
 
 ---
 
