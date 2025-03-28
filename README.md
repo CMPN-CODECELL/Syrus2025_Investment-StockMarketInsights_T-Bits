@@ -197,10 +197,7 @@ Start → Input → Prompt → Display
 
 ## 📸 Screenshots
 
-![Input Block](Agent%20SS/Screenshot%202025-03-28%20223900.png)  
-![Prompt Configuration](Agent%20SS/Screenshot%202025-03-28%20223839.png)  
-![Final Output Display](Agent%20SS/Screenshot%202025-03-28%20223819.png)
-![NewsAgent](Agent%20SS/Screenshot 2025-03-28 235515.png)
+![NAgent Execution](Agent%20SS/Screenshot%2025-03-28%235515.png)
 
 ---
 
