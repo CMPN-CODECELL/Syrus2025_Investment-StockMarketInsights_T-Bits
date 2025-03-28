@@ -93,14 +93,10 @@ AI: Here are your personalized investment recommendations:
 
 ## 📸 Implementation Screenshots
 
-### 1. Main Agent Setup
 ![Main Agent Setup](Agent%20SS/Screenshot%202025-03-28%20224147.png)
 
-### 2. Sub-Agents Configuration
 ![Sub-Agents Configuration](Agent%20SS/Screenshot%202025-03-28%20224126.png)
 
-### 3. Workflow Setup
 ![Workflow Setup](Agent%20SS/Screenshot%202025-03-28%20224059.png)
 
-### 4. Agent Execution
 ![Agent Execution](Agent%20SS/Screenshot%202025-03-28%20225149.png)
