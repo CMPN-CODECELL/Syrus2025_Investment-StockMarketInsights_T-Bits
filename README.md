@@ -1,8 +1,3 @@
-Sure! Here's the full **README.md** content combining both the **Investment Recommendations Agent** and the **News Summarization Agent** sections in a format ready to paste directly into VS Code:
-
----
-
-```markdown
 # 📊 Stock Market Insights AI – Multi-Agent System
 
 This project is built using **UPTIQ AI Workbench** as a **multi-agent system** to provide intelligent stock market insights. Each sub-agent focuses on a specialized task such as investment recommendations, financial news summarization, sentiment analysis, and more.
