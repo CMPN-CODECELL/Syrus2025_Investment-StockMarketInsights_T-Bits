@@ -96,6 +96,7 @@ uvicorn main:app --reload
 ## 📸 Screenshots
 
 ![Investment Recommendation Workflow](Agent%20SS/Screenshot%202025-03-28%20224059.png)  
-![News Summarization Agent](Agent%20SS/Screenshot%202025-03-28%20235515.png)  
 ![Agent Configuration](Agent%20SS/Screenshot%202025-03-28%20224126.png)  
 ![System Dashboard](Agent%20SS/Screenshot%202025-03-28%20224147.png)
+![News Summarization Agent](Agent%20SS/Screenshot%202025-03-28%20235515.png)  
+
