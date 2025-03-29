@@ -1,214 +1,101 @@
-# 📊 Stock Market Insights AI – Multi-Agent System
-
-This project is built using **UPTIQ AI Workbench** as a **multi-agent system** to provide intelligent stock market insights. Each sub-agent focuses on a specialized task such as investment recommendations, financial news summarization, sentiment analysis, and more.
-
----
+# Stock Market Insights - AI-Powered Investment Analysis Platform
 
 ## 🧠 Overview
 
-**Main Agent Name**: `Stock Market Insights AI`  
-**System Type**: `Multi-Agent System`
+Stock Market Insights is an intelligent platform that leverages a multi-agent AI system to provide comprehensive stock market analysis and personalized investment recommendations. Built using UPTIQ AI Workbench, our solution helps investors make informed decisions by analyzing market trends, financial news, and user preferences.
 
----
+## 🤖 Key Features
 
-## 🤖 Sub-Agents Included
+- **Personalized Investment Recommendations** based on user goals, time horizon, and risk tolerance
+- **Market Analysis** with data-driven insights and trend analysis
+- **Financial News Summarization** to extract critical information from market updates
+- **Sentiment Analysis** on news and social media to gauge market sentiment
+- **Predictive Insights** for potential market movements
+- **User-friendly Dashboard** with intuitive visualizations
 
-- ✅ Market Analysis Agent  
-- ✅ Predictive Insights Agent  
-- ✅ News Summarization Agent  
-- ✅ Sentiment Analysis Agent  
-- ✅ **Investment Recommendations Agent** ← *Detailed below*
+## 🛠️ Technology Stack
 
----
+### Frontend
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- Headless UI
+- Lottie Animations
 
-# 📈 Investment Recommendations Agent
+### Backend
+- FastAPI (Python)
+- Supabase for data storage
+- UPTIQ AI Workbench for agent orchestration
 
-This sub-agent provides **personalized investment suggestions** based on three key user inputs:  
-1. **Investment Goal**  
-2. **Time Horizon**  
-3. **Risk Tolerance**
+## 🧩 System Architecture
 
-It guides the user through a sequence of questions and uses an LLM to generate smart investment advice.
+### Multi-Agent System
+Our platform employs a sophisticated multi-agent architecture where each agent specializes in a specific task:
 
----
+1. **Investment Recommendations Agent** - Provides personalized investment suggestions
+2. **Market Analysis Agent** - Analyzes market trends and indicators
+3. **News Summarization Agent** - Condenses financial news into actionable insights
+4. **Sentiment Analysis Agent** - Gauges market sentiment from various sources
+5. **Predictive Insights Agent** - Forecasts potential market movements
 
-## ⚙️ Workflow Setup
+## 📊 Agent Workflows
 
-Navigate to:  
-`Workflows > Workflow for Recommend Investments`
+### Investment Recommendations Agent
+This agent collects user preferences through a conversational interface:
+1. Investment Goal (retirement, education, etc.)
+2. Time Horizon (short-term, long-term)
+3. Risk Tolerance (low, medium, high)
 
-### 1. Workflow Type
+It then processes this information to generate tailored investment strategies using advanced LLMs.
 
-- Set as: **Conversational**
+### News Summarization Agent
+This agent:
+1. Accepts financial news input from users
+2. Processes the content using NLP techniques
+3. Extracts key points and potential market impacts
+4. Presents a concise summary with actionable insights
 
-### 2. Add Question Blocks
+## 🚀 Getting Started
 
-From `User Interaction > Question`, add three question blocks:
+### Prerequisites
+- Node.js (v18+)
+- Python (v3.10+)
+- UPTIQ AI Workbench account
 
-| Step | Question | Variable | Reference Path |
-|------|----------|----------|----------------|
-| Q1 | What is your investment goal? | `investment_goal` | `$.response` |
-| Q2 | Are you looking for short-term or long-term investments? | `investment_horizon` | `$.response` |
-| Q3 | What is your risk tolerance (Low, Medium, High)? | `risk_tolerance` | `$.response` |
+### Installation
 
-🛠 You can configure these questions ahead of time in:  
-`Config & Utils > Questions`
-
----
-
-### 3. Add Prompt Block
-
-From `AI / Foundational > Prompt`:
-
-- **Model**: `GPT-4`, `LLAMA`, `Claude`, etc.
-
-#### System Prompt
-
-```txt
-You are an expert financial advisor. Based on the user's investment goal, time horizon, and risk tolerance, recommend 3 ideal investment options.
+#### Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
 ```
 
-#### Query
+#### Backend Setup
+```bash
+cd backend
+# Create and activate virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-```txt
-What are the best investment options for a user whose goal is "{{investment_goal}}", investment horizon is "{{investment_horizon}}", and risk tolerance is "{{risk_tolerance}}"?
+# Install dependencies
+pip install -r requirements.txt
 
-Here are your personalized investment recommendations:
-{{prompt_output}}
-
-User: Can you suggest some good investments based on my goals?
-
-AI: What is your investment goal?
-User: Save for retirement.
-
-AI: Are you looking for short-term or long-term investments?
-User: Long-term.
-
-AI: What is your risk tolerance (Low, Medium, High)?
-User: Medium.
-
-AI: Here are your personalized investment recommendations:
-1. Mutual Funds - Good for long-term with medium risk.
-2. Index Funds - Broad market exposure.
-3. REITs - Passive income from real estate.
+# Start the server
+uvicorn main:app --reload
 ```
 
----
-
-### 4. Add Display Block
-
-From `User Interaction > Display`:
-
-- **Text Configuration**:
-
-```txt
-Here are your personalized investment recommendations:
-{{prompt_output}}
-```
-
----
-
-### ✅ Final Agent Flow
-
-```text
-Start → Question 1 → Question 2 → Question 3 → Prompt → Display
-```
-
----
+## 📈 Future Enhancements
+- External news scraping integration via API
+- Automated market trend forecasting using historical price datasets
+- Portfolio optimization with reinforcement learning
+- Mobile application for on-the-go insights
+- Integration with trading platforms for one-click investments
 
 ## 📸 Screenshots
 
-![Main Agent Setup](Agent%20SS/Screenshot%202025-03-28%20224147.png)  
-![Sub-Agents Configuration](Agent%20SS/Screenshot%202025-03-28%20224126.png)  
-![Workflow Setup](Agent%20SS/Screenshot%202025-03-28%20224059.png)  
-![Agent Execution](Agent%20SS/Screenshot%202025-03-28%20225149.png)
-
----
-
-# 📰 News Summarization Agent
-
-This agent allows users to **paste financial news** and get **quick summaries** explaining key updates and market impact.
-
----
-
-## ⚙️ Workflow Setup
-
-Navigate to:  
-`Workflows > Workflow for Summarize Financial News`
-
-### 1. Workflow Type
-
-- Set as: **Conversational**
-
----
-
-### 2. Add Input Block
-
-From `User Interaction > Input`:
-
-- Label: `News Input`
-- **Input Type**: `String`
-- **Agent Variable**: `news_text`  
-- Reference Path: `$.response`
-
----
-
-### 3. Add Prompt Block
-
-From `AI / Foundational > Prompt`:
-
-- **Model**: GPT-4 (or preferred LLM)
-
-#### System Prompt
-
-```txt
-You are a financial analyst AI.
-Summarize any financial news text clearly and explain potential market impact.
-```
-
-#### Query
-
-```txt
-Summarize this financial news: {{news_text}}
-```
-
----
-
-### 4. Add Display Block
-
-From `User Interaction > Display`:
-
-- **Text Configuration**:
-
-```txt
-📌 Here's the summarized news update:
-{{prompt_output}}
-```
-
----
-
-### ✅ Final Agent Flow
-
-```text
-Start → Input → Prompt → Display
-```
-
----
-
-## 📸 Screenshots
-
-![NAgent Execution](Agent%20SS/Screenshot%202025-03-28%20235515.png)
-
----
-
-## ✅ Status
-
-Both agents tested and verified in the UPTIQ console via conversational interface.
-
----
-
-## 🚀 Future Enhancements
-
-- Add external news scraping via API
-- Automate market trend forecasting using historical price datasets
-- Include reinforcement learning for investment optimization
+![Investment Recommendation Workflow](Agent%20SS/Screenshot%202025-03-28%20224059.png)  
+![News Summarization Agent](Agent%20SS/Screenshot%202025-03-28%20235515.png)  
+![Agent Configuration](Agent%20SS/Screenshot%202025-03-28%20224126.png)  
+![System Dashboard](Agent%20SS/Screenshot%202025-03-28%20224147.png)
